@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlie Millson | International Relations Student</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom font import for a modern look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc; /* Very light blue-gray background */
+        }
+        /* Custom scrollbar style for coolness */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #0d9488; /* Teal-600 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #0d9488; /* Teal accent line */
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -10px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: #0d9488;
+            border-radius: 50%;
+            border: 2px solid white;
+            z-index: 10;
+        }
+
+        /* Responsive styling for the main container */
+        @media (min-width: 1024px) {
+            .main-content {
+                max-width: 1000px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto px-4 py-8 lg:py-16 main-content">
+        <!-- HEADER AND CONTACT -->
+        <header class="bg-white shadow-xl rounded-2xl p-6 md:p-10 mb-8 border-t-4 border-teal-600">
+            <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-2">Charlie Millson</h1>
+            <p class="text-xl font-medium text-teal-600 mb-4">International Relations and Development BA Student</p>
+            
+            <!-- Contact Bar -->
+            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+                <span class="flex items-center">
+                    <!-- Location Icon (lucide-map-pin) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2 text-teal-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    HA9 0FR, United Kingdom
+                </span>
+                <span class="flex items-center">
+                    <!-- Phone Icon (lucide-phone) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2 text-teal-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +44 7944 416329
+                </span>
+                <a href="mailto:hello@charliemillson.me" class="flex items-center hover:text-teal-600 transition duration-150">
+                    <!-- Mail Icon (lucide-mail) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2 text-teal-500"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.83 1.83 0 0 1-2.06 0L2 7"/></svg>
+                    hello@charliemillson.me
+                </a>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT GRID -->
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT COLUMN: STATEMENT & EXPERIENCE (Larger space on desktop) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- PERSONAL STATEMENT -->
+                <section class="bg-white shadow-lg rounded-2xl p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 section-header">Summary</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        A highly dedicated and reliable International Relations and Development BA student with a proven commitment to teamwork, leadership, and global citizenship. My extensive involvement in the Scouting movement, including competitive selection to represent the UK at the World Scout Jamboree (Korea) and the World Scout Moot (Portugal), showcases exceptional communication and decision-making skills in diverse, high-pressure environments. As a qualified Young Leader, I am passionate about youth development, and my volunteer work with Dolen Cymru (raising over £2,000) and the Welsh government's Taith initiative highlights my ability to contribute meaningfully to international exchange and sustainability programs.
+                    </p>
+                </section>
+
+                <!-- WORK EXPERIENCE -->
+                <section class="bg-white shadow-lg rounded-2xl p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 section-header">Work Experience</h2>
+
+                    <!-- Job 1: McDonald's -->
+                    <div class="mb-6 relative pl-4 lg:pl-6 border-l-2 border-gray-200">
+                        <span class="timeline-dot"></span>
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Crew Member, McDonalds</h3>
+                            <span class="text-sm font-semibold text-teal-600 whitespace-nowrap">09/2023 - Present</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3 italic">Operated at one of the UK's busiest sites (ranked 8th nationally, 1st in Wales)</p>
+                        <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                            <li>Consistently managed high volume operations and maintained exceptional service standards in a top-performing national location.</li>
+                            <li>Supported the operational setup of a new store location, demonstrating versatility and the ability to transfer knowledge across different teams.</li>
+                            <li>Delivered friendly and efficient customer service, handling cash transactions securely and consistently meeting performance deadlines during peak hours.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Job 2: Waiter -->
+                    <div class="relative pl-4 lg:pl-6 border-l-2 border-gray-200">
+                        <span class="timeline-dot"></span>
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Waiter, Anyone Waiting (A1W)</h3>
+                            <span class="text-sm font-semibold text-teal-600 whitespace-nowrap">08/2021 - 09/2022</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3 italic">Professional service at high-profile venues and events</p>
+                        <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                            <li>Provided exceptional, professional service to guests at high-profile venues, including weddings and racing events.</li>
+                            <li>Actively supported the planning and execution logistics for large-scale public events, such as the Llanelli Christmas Carnival.</li>
+                            <li>Contributed to a positive, well-coordinated event experience, demonstrating strong attention to detail and adaptability.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- RIGHT COLUMN: VOLUNTEERING & EDUCATION -->
+            <div class="lg:col-span-1 space-y-8">
+
+                <!-- LEADERSHIP & VOLUNTEERING -->
+                <section class="bg-white shadow-lg rounded-2xl p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 section-header">Leadership & Outreach</h2>
+                    
+                    <ul class="space-y-4">
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <h3 class="font-semibold text-gray-900">International Representation</h3>
+                            <p class="text-sm text-gray-700 mt-1">Selected from over 300 young people to represent the UK at the World Scout Jamboree (Korea, 2023) and chosen for the World Scout Moot (Portugal).</p>
+                        </li>
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <h3 class="font-semibold text-gray-900">Community Fundraising</h3>
+                            <p class="text-sm text-gray-700 mt-1">Led volunteer work with Dolen Cymru, successfully raising over £2,000 to support cultural exchange programs between Wales and Lesotho.</p>
+                        </li>
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <h3 class="font-semibold text-gray-900">Policy Support</h3>
+                            <p class="text-sm text-gray-700 mt-1">Supported the Welsh government's Taith International Learning Exchange programme, contributing to long-term sustainability efforts.</p>
+                        </li>
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <h3 class="font-semibold text-gray-900">Youth Development</h3>
+                            <p class="text-sm text-gray-700 mt-1">Served as a qualified Young Leader within Scouting, accredited in First Aid, Mental Health, and Safeguarding.</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- EDUCATION & QUALIFICATIONS -->
+                <section class="bg-white shadow-lg rounded-2xl p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 section-header">Education</h2>
+
+                    <div class="space-y-5">
+                        <!-- University -->
+                        <div class="border-b pb-3 border-gray-100">
+                            <h3 class="font-bold text-lg text-teal-600">University of Westminster</h3>
+                            <p class="text-gray-900 font-medium">BA (Hons) International Relations and Development</p>
+                            <p class="text-sm text-gray-500">Currently Studying</p>
+                        </div>
+
+                        <!-- BTEC/NCFE -->
+                        <div class="border-b pb-3 border-gray-100">
+                            <h3 class="font-bold text-lg text-teal-600">NCFE / Pearson Qualifications</h3>
+                            <p class="text-gray-900 mt-1">BTEC Level 3 Extended Diploma in Travel and Tourism (<span class="font-semibold">L3 Distinction</span>)</p>
+                            <p class="text-gray-900">BTEC Level 2 Public Services (<span class="font-semibold">L2 Distinction</span>)</p>
+                            <p class="text-sm text-gray-500">2018 - 2025</p>
+                        </div>
+
+                        <!-- GCSEs -->
+                        <div>
+                            <h3 class="font-bold text-lg text-teal-600">Ysgol Bryngwyn</h3>
+                            <p class="text-gray-900 font-medium">GCSEs (10 total)</p>
+                            <ul class="text-sm text-gray-600 list-disc ml-5 mt-1">
+                                <li>Mathematics Numeracy, Science Double Award 1, English Literature (<span class="font-semibold">B Grade</span>)</li>
+                                <li>Remaining passes at C grade or higher in 7 subjects.</li>
+                            </ul>
+                            <p class="text-sm text-gray-500 mt-1">2018 - 2023</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="mt-12 text-center text-sm text-gray-500">
+            <p><script>document.write(new Date().getFullYear())</script> Charlie Millson.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
