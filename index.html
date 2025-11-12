@@ -53,12 +53,88 @@
                 max-width: 1000px;
             }
         }
+        
+        /* --- Print Styles --- */
+        @media print {
+            /* Hide all buttons, modals, and interactive elements */
+            #download-pdf-button,
+            #copy-email-button,
+            #phone-link,
+            .external-logo-link, /* Hides the logo links */
+            #phone-link-modal,
+            #external-link-modal,
+            footer {
+                display: none;
+            }
+            
+            /* Hide the email link's icon and just show text */
+            a[href^="mailto:"] svg, a[href^="tel:"] svg {
+                display: none;
+            }
+            
+            /* Reset body */
+            body {
+                background-color: #fff !important;
+                color: #000;
+            }
+
+            /* Remove shadows and borders */
+            header, section {
+                box-shadow: none;
+                border-top: none;
+            }
+            
+            /* Ensure main content uses full width and remove padding */
+            .container, .main-content, header, section {
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            header, section {
+                margin-bottom: 1rem;
+            }
+
+            /* Force animated sections to be visible */
+            .animate-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            /* Improve link appearance */
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+            .text-teal-600, .text-teal-500 {
+                color: #000 !important;
+            }
+            
+            /* Hide timeline dots */
+            .timeline-dot {
+                display: none;
+            }
+            
+            /* Ensure timeline border is visible */
+            .border-l-2 {
+                border-left-width: 2px;
+                border-color: #e2e8f0;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-800">
 
     <div class="container mx-auto px-4 py-8 lg:py-16 main-content">
-        <header class="bg-white shadow-xl rounded-2xl p-6 md:p-10 mb-8 border-t-4 border-teal-600">
+        <!-- Added `relative` for button positioning -->
+        <header class="relative bg-white shadow-xl rounded-2xl p-6 md:p-10 mb-8 border-t-4 border-teal-600">
+            
+            <!-- Download PDF Button -->
+            <button id="download-pdf-button" type="button" class="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-2 bg-teal-600 text-white px-3 py-2 rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all text-sm font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                <span class="hidden sm:inline">Download PDF</span>
+            </button>
+            
             <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-2">Charlie Millson</h1>
             <p class="text-xl font-medium text-teal-600 mb-4">International Relations and Development BA Student</p>
             
@@ -332,6 +408,14 @@
                 modal.classList.add('hidden');
             }, 300); // Match duration-300
         };
+
+        // --- Download PDF Logic ---
+        const downloadPdfButton = document.getElementById('download-pdf-button');
+        if (downloadPdfButton) {
+            downloadPdfButton.addEventListener('click', () => {
+                window.print();
+            });
+        }
 
         // --- External Link Modal ---
         const externalModal = document.getElementById('external-link-modal');
