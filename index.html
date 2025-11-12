@@ -141,21 +141,21 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 section-header">Leadership & Outreach</h2>
                     
                     <div class="flex justify-around items-center gap-4 mb-8 pt-2">
-                        <a href="https://www.scouts.org.uk/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.scouts.org.uk/" target="_blank" rel="noopener noreferrer" class="external-logo-link">
                             <img 
                                 src="https://i.postimg.cc/85WzgGpd/Scouts.png" 
                                 alt="Scouts UK Logo" 
                                 class="w-20 h-20 rounded-full object-contain p-2 bg-white border border-gray-200 shadow-xl transition-transform hover:scale-105"
                             >
                         </a>
-                        <a href="https://www.dolencymru.org/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.dolencymru.org/" target="_blank" rel="noopener noreferrer" class="external-logo-link">
                             <img 
                                 src="https://i.postimg.cc/CK9x25gm/Dolen.png" 
                                 alt="Dolen Cymru Logo" 
                                 class="w-20 h-20 rounded-full object-contain p-2 bg-white border border-gray-200 shadow-xl transition-transform hover:scale-105"
                             >
                         </a>
-                        <a href="https://www.taith.wales/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.taith.wales/" target="_blank" rel="noopener noreferrer" class="external-logo-link">
                             <img 
                                 src="https://i.postimg.cc/767Zr4HM/Taith.png" 
                                 alt="Taith Programme Logo" 
@@ -222,34 +222,94 @@
         </footer>
     </div>
 
-<script>
-    // Intersection Observer for Scroll Animation
-    document.addEventListener('DOMContentLoaded', () => {
-        // Select all sections marked for animation
-        const sections = document.querySelectorAll('.animate-on-scroll');
-        
-        const observerOptions = {
-            root: null, // use the viewport as the root
-            rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        };
+    <div id="external-link-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out opacity-0 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md m-4 transform transition-all duration-300 ease-out scale-95 opacity-0">
+            <div class="p-6 md:p-8">
+                <h3 class="text-xl font-semibold text-gray-900" id="modal-title">External Website</h3>
+                <p class="mt-2 text-gray-700">You are about to navigate to an external website. Do you want to continue?</p>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-2xl flex justify-end gap-3">
+                <button id="modal-cancel" type="button" class="px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                    Cancel
+                </button>
+                <button id="modal-continue" type="button" class="px-4 py-2 bg-teal-600 text-white rounded-lg shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Intersection Observer for Scroll Animation ---
+        const sections = document.querySelectorAll('.animate-on-scroll');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // When the element comes into view, remove the hidden state 
-                    // and add the visible state to trigger the transition.
                     entry.target.classList.remove('opacity-0', 'translate-y-4');
                     entry.target.classList.add('opacity-100', 'translate-y-0');
-                    // Stop observing this element since it has already animated
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
-
-        // Start observing each section
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // --- External Link Modal Logic ---
+        const modal = document.getElementById('external-link-modal');
+        const modalContent = modal.querySelector('div'); // Target the inner div for transitions
+        const modalCancel = document.getElementById('modal-cancel');
+        const modalContinue = document.getElementById('modal-continue');
+        const externalLinks = document.querySelectorAll('.external-logo-link');
+        let targetUrl = '';
+
+        const openModal = () => {
+            modal.classList.remove('hidden');
+            // Trigger reflow to allow transition
+            void modal.offsetWidth; 
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('opacity-0', 'scale-95');
+            modalContent.classList.add('opacity-100', 'scale-100');
+        };
+
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('opacity-0', 'scale-95');
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Match the duration-300
+        };
+
+        externalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop the link from navigating immediately
+                targetUrl = link.href; // Store the URL
+                openModal();
+            });
+        });
+
+        modalCancel.addEventListener('click', closeModal);
+        modalContinue.addEventListener('click', () => {
+            if (targetUrl) {
+                window.open(targetUrl, '_blank'); // Open in a new tab
+                targetUrl = ''; // Clear the URL
+            }
+            closeModal();
+        });
+
+        // Close modal if clicking on the overlay (outside the content)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
     });
 </script>
