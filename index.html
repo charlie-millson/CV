@@ -67,7 +67,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2 text-teal-500"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     HA9 0FR, United Kingdom
                 </span>
-                <a href="tel:+447944416329" class="flex items-center hover:text-teal-600 transition duration-150">
+                <!-- Added id="phone-link" for JavaScript targeting -->
+                <a href="tel:+447944416329" id="phone-link" class="flex items-center hover:text-teal-600 transition duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2 text-teal-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     +44 7944 416329
                 </a>
@@ -141,6 +142,7 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-6 section-header">Leadership & Outreach</h2>
                     
                     <div class="flex justify-around items-center gap-4 mb-8 pt-2">
+                        <!-- Added class="external-logo-link" for JS targeting -->
                         <a href="https://www.scouts.org.uk/" target="_blank" rel="noopener noreferrer" class="external-logo-link">
                             <img 
                                 src="https://i.postimg.cc/85WzgGpd/Scouts.png" 
@@ -222,17 +224,48 @@
         </footer>
     </div>
 
-    <div id="external-link-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out opacity-0 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md m-4 transform transition-all duration-300 ease-out scale-95 opacity-0">
+    <!-- External Link Modal -->
+    <div id="external-link-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out opacity-0 hidden" aria-labelledby="modal-title-external" role="dialog" aria-modal="true">
+        <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-md m-4 transform transition-all duration-300 ease-out scale-95 opacity-0">
             <div class="p-6 md:p-8">
-                <h3 class="text-xl font-semibold text-gray-900" id="modal-title">External Website</h3>
+                <h3 class="text-xl font-semibold text-gray-900" id="modal-title-external">External Website</h3>
                 <p class="mt-2 text-gray-700">You are about to navigate to an external website. Do you want to continue?</p>
             </div>
             <div class="bg-gray-50 px-6 py-4 rounded-b-2xl flex justify-end gap-3">
-                <button id="modal-cancel" type="button" class="px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                <button class"modal-cancel" type="button" class="px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
                     Cancel
                 </button>
-                <button id="modal-continue" type="button" class="px-4 py-2 bg-teal-600 text-white rounded-lg shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                <button id="modal-continue-external" type="button" class="px-4 py-2 bg-teal-600 text-white rounded-lg shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Link Modal -->
+    <div id="phone-link-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ease-out opacity-0 hidden" aria-labelledby="modal-title-phone" role="dialog" aria-modal="true">
+        <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-md m-4 transform transition-all duration-300 ease-out scale-95 opacity-0">
+            <div class="p-6 md:p-8 text-center">
+                <h3 class="text-xl font-semibold text-gray-900" id="modal-title-phone">Contact by Phone</h3>
+                
+                <!-- Desktop Content (hidden by default) -->
+                <div id="phone-desktop-content" class="hidden my-4">
+                    <p class="text-gray-700">Scan this QR code with your phone to call:</p>
+                    <img id="qr-code-img" src="" alt="Phone QR Code" class="w-40 h-40 mx-auto my-4 rounded-lg shadow-md" onerror="this.alt='QR code loading...'">
+                    <p class="text-sm text-gray-600">Or, continue to call from this device.</p>
+                </div>
+                
+                <!-- Mobile Content (hidden by default) -->
+                <div id="phone-mobile-content" class="hidden my-4">
+                    <p class="text-gray-700">This will open your phone's dialer. Do you want to continue?</p>
+                </div>
+
+            </div>
+            <div class="bg-gray-50 px-6 py-4 rounded-b-2xl flex justify-end gap-3">
+                <button class="modal-cancel" type="button" class="px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
+                    Cancel
+                </button>
+                <button id="modal-continue-phone" type="button" class="px-4 py-2 bg-teal-600 text-white rounded-lg shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all">
                     Continue
                 </button>
             </div>
@@ -241,6 +274,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Utility to check for mobile ---
+        const isMobile = () => /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+
         // --- Intersection Observer for Scroll Animation ---
         const sections = document.querySelectorAll('.animate-on-scroll');
         const observerOptions = {
@@ -261,55 +297,107 @@
             observer.observe(section);
         });
 
-        // --- External Link Modal Logic ---
-        const modal = document.getElementById('external-link-modal');
-        const modalContent = modal.querySelector('div'); // Target the inner div for transitions
-        const modalCancel = document.getElementById('modal-cancel');
-        const modalContinue = document.getElementById('modal-continue');
-        const externalLinks = document.querySelectorAll('.external-logo-link');
-        let targetUrl = '';
-
-        const openModal = () => {
+        // --- Refactored Modal Logic ---
+        const openModal = (modal) => {
+            if (!modal) return;
+            const modalContent = modal.querySelector('.modal-content');
             modal.classList.remove('hidden');
-            // Trigger reflow to allow transition
-            void modal.offsetWidth; 
+            void modal.offsetWidth; // Trigger reflow
             modal.classList.remove('opacity-0');
-            modalContent.classList.remove('opacity-0', 'scale-95');
-            modalContent.classList.add('opacity-100', 'scale-100');
+            if(modalContent) {
+                modalContent.classList.remove('opacity-0', 'scale-95');
+                modalContent.classList.add('opacity-100', 'scale-100');
+            }
         };
 
-        const closeModal = () => {
+        const closeModal = (modal) => {
+            if (!modal) return;
+            const modalContent = modal.querySelector('.modal-content');
             modal.classList.add('opacity-0');
-            modalContent.classList.add('opacity-0', 'scale-95');
-            modalContent.classList.remove('opacity-100', 'scale-100');
-            // Wait for transition to finish before hiding
+            if(modalContent) {
+                modalContent.classList.add('opacity-0', 'scale-95');
+                modalContent.classList.remove('opacity-100', 'scale-100');
+            }
             setTimeout(() => {
                 modal.classList.add('hidden');
-            }, 300); // Match the duration-300
+            }, 300); // Match duration-300
         };
+
+        // --- External Link Modal ---
+        const externalModal = document.getElementById('external-link-modal');
+        const externalModalContinue = document.getElementById('modal-continue-external');
+        const externalLinks = document.querySelectorAll('.external-logo-link');
+        let externalTargetUrl = '';
 
         externalLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop the link from navigating immediately
-                targetUrl = link.href; // Store the URL
-                openModal();
+                e.preventDefault();
+                externalTargetUrl = link.href;
+                openModal(externalModal);
             });
         });
 
-        modalCancel.addEventListener('click', closeModal);
-        modalContinue.addEventListener('click', () => {
-            if (targetUrl) {
-                window.open(targetUrl, '_blank'); // Open in a new tab
-                targetUrl = ''; // Clear the URL
+        externalModalContinue.addEventListener('click', () => {
+            if (externalTargetUrl) {
+                window.open(externalTargetUrl, '_blank');
+                externalTargetUrl = '';
             }
-            closeModal();
+            closeModal(externalModal);
         });
 
-        // Close modal if clicking on the overlay (outside the content)
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
+        // --- Phone Link Modal ---
+        const phoneModal = document.getElementById('phone-link-modal');
+        const phoneModalContinue = document.getElementById('modal-continue-phone');
+        const phoneLink = document.getElementById('phone-link');
+        const phoneDesktopContent = document.getElementById('phone-desktop-content');
+        const phoneMobileContent = document.getElementById('phone-mobile-content');
+        const qrCodeImg = document.getElementById('qr-code-img');
+        let phoneTargetUrl = '';
+
+        if (phoneLink) {
+            phoneLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                phoneTargetUrl = e.currentTarget.href;
+                
+                if (isMobile()) {
+                    phoneMobileContent.classList.remove('hidden');
+                    phoneDesktopContent.classList.add('hidden');
+                } else {
+                    phoneDesktopContent.classList.remove('hidden');
+                    phoneMobileContent.classList.add('hidden');
+                    // Generate QR code
+                    const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(phoneTargetUrl)}`;
+                    qrCodeImg.src = qrApiUrl;
+                }
+                
+                openModal(phoneModal);
+            });
+        }
+
+        phoneModalContinue.addEventListener('click', () => {
+            if (phoneTargetUrl) {
+                window.location.href = phoneTargetUrl; // Use location.href for tel: links
+                phoneTargetUrl = '';
             }
+            closeModal(phoneModal);
+        });
+
+
+        // --- Close Modals Logic (for all modals) ---
+        const allModals = document.querySelectorAll('[role="dialog"]');
+        allModals.forEach(modal => {
+            // Cancel buttons
+            const cancelButtons = modal.querySelectorAll('.modal-cancel');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', () => closeModal(modal));
+            });
+
+            // Click overlay to close
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
         });
     });
 </script>
