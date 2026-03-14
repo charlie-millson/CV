@@ -8,7 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* Custom font import for a modern look */
+        /* Prevent sections, timeline items, and lists from splitting across pages */
+        section, 
+        .mb-6, 
+        li {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }/* Custom font import for a modern look */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f9fc; /* Very light blue-gray background */
