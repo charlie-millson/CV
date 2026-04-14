@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlie Millson | CV</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/NF7wGfrX/C.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #fffdf7;
+            --ink: #18212f;
+            --muted: #5c6678;
+            --line: #d5d9e2;
+            --accent: #0f766e;
+            --accent-soft: #dff3ef;
+            --page: #eef3f7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Public Sans", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(15, 118, 110, 0.1), transparent 28rem),
+                linear-gradient(180deg, #f7fafc 0%, var(--page) 100%);
+            color: var(--ink);
+        }
+
+        h1, h2, h3 {
+            font-family: "Fraunces", serif;
+        }
+
+        .cv-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 4rem;
+        }
+
+        .cv-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cv-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            padding: 0.85rem 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+            box-shadow: 0 16px 35px rgba(24, 33, 47, 0.1);
+        }
+
+        .cv-action:hover,
+        .cv-action:focus-visible {
+            transform: translateY(-1px);
+        }
+
+        .cv-action-primary {
+            background: var(--ink);
+            color: white;
+        }
+
+        .cv-action-secondary {
+            background: white;
+            color: var(--ink);
+            border: 1px solid rgba(24, 33, 47, 0.1);
+        }
+
+        .cv-paper {
+            background: var(--paper);
+            border: 1px solid rgba(24, 33, 47, 0.08);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 28px 60px rgba(24, 33, 47, 0.12);
+        }
+
+        .cv-hero {
+            padding: 3rem;
+            background:
+                linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 60%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.9fr);
+            gap: 2rem;
+            align-items: end;
+            margin-top: 1.25rem;
+        }
+
+        .hero-name {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 4.3rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-role {
+            margin: 0.85rem 0 0;
+            color: var(--accent);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .hero-summary {
+            margin: 1.5rem 0 0;
+            max-width: 60ch;
+            line-height: 1.75;
+            color: var(--muted);
+        }
+
+        .hero-contact {
+            display: grid;
+            gap: 0.75rem;
+            padding: 1.25rem;
+            border-radius: 24px;
+            background: white;
+            border: 1px solid var(--line);
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .contact-value,
+        .contact-value a {
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
+        }
+
+        .cv-main,
+        .cv-side {
+            padding: 2.5rem 3rem 3rem;
+        }
+
+        .cv-side {
+            background: rgba(15, 118, 110, 0.03);
+            border-left: 1px solid var(--line);
+        }
+
+        .section + .section {
+            margin-top: 2.25rem;
+        }
+
+        .section-title {
+            margin: 0 0 1.25rem;
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 2.8rem;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0.35rem;
+            top: 0.35rem;
+            bottom: 0.35rem;
+            width: 1px;
+            background: var(--line);
+        }
+
+        .entry {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .entry + .entry {
+            margin-top: 1.75rem;
+        }
+
+        .entry::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.4rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 0.28rem var(--paper);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .entry-meta {
+            margin: 0.25rem 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .entry-date {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .entry-list,
+        .skill-list,
+        .education-list {
+            margin: 0.85rem 0 0;
+            padding-left: 1.1rem;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+
+        .education-card,
+        .side-card {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 1.15rem 1.25rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .education-card + .education-card,
+        .side-card + .side-card {
+            margin-top: 1rem;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            margin: 0.3rem 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: 0.5rem 0.85rem;
+            background: white;
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .side-list {
+            margin: 0.9rem 0 0;
+            padding-left: 1rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .website-panel {
+            margin: 0 3rem 2rem;
+            padding: 1.25rem 1.4rem;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+        }
+
+        .website-kicker {
+            margin: 0 0 0.4rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .website-title {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .website-copy {
+            margin: 0.45rem 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .website-link {
+            display: inline-block;
+            margin-top: 0.85rem;
+            color: var(--ink);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(24, 33, 47, 0.25);
+        }
+
+        .website-qr {
+            width: 116px;
+            height: 116px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: white;
+            padding: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid,
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-side {
+                border-left: none;
+                border-top: 1px solid var(--line);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cv-shell {
+                padding: 1rem 0.75rem 2rem;
+            }
+
+            .cv-hero,
+            .cv-main,
+            .cv-side,
+            .website-panel {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .cv-hero {
+                padding-top: 2rem;
+            }
+
+            .website-panel {
+                margin-left: 1.25rem;
+                margin-right: 1.25rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cv-paper {
+                border-radius: 24px;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
+            body {
+                background: white;
+            }
+
+            .cv-shell {
+                max-width: none;
+                padding: 0;
+            }
+
+            .cv-actions {
+                display: none;
+            }
+
+            .cv-paper {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+            }
+
+            .cv-hero {
+                padding: 0 0 1rem;
+                background: white;
+            }
+
+            .cv-main,
+            .cv-side {
+                padding: 1.25rem 0 0;
+            }
+
+            .website-panel {
+                margin: 1rem 0 0;
+                padding: 1rem 0 0;
+                border: none;
+                border-top: 1px solid var(--line);
+                border-radius: 0;
+                gap: 0.75rem;
+            }
+
+            .cv-side {
+                background: white;
+                border-left: none;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .education-card,
+            .side-card,
+            .hero-contact,
+            .website-panel {
+                break-inside: avoid;
+                background: white;
+            }
+
+            .website-qr {
+                width: 96px;
+                height: 96px;
+                padding: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-shell">
+        <div class="cv-actions">
+            <a class="cv-action cv-action-secondary" href="index.html">View Original Page</a>
+            <button class="cv-action cv-action-primary" type="button" onclick="window.print()">Download PDF</button>
+        </div>
+
+        <main class="cv-paper">
+            <header class="cv-hero">
+                <span class="eyebrow">Curriculum Vitae</span>
+                <div class="hero-grid">
+                    <div>
+                        <h1 class="hero-name">Charlie Millson</h1>
+                        <p class="hero-role">BA International Relations and Development Student</p>
+                        <p class="hero-summary">
+                            Motivated university student with customer-facing experience across retail, hospitality, and events, alongside strong leadership and international engagement through Scouting and exchange programmes. Brings calm communication, reliability under pressure, and a consistent track record of contributing to community-focused and cross-cultural initiatives.
+                        </p>
+                    </div>
+
+                    <div class="hero-contact">
+                        <div>
+                            <div class="contact-label">Location</div>
+                            <div class="contact-value">HA9 0FR, United Kingdom</div>
+                        </div>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value"><a href="tel:+447944416329">+44 7944 416329</a></div>
+                        </div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value"><a href="mailto:hello@charliemillson.me">hello@charliemillson.me</a></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="cv-grid">
+                <div class="cv-main">
+                    <section class="section">
+                        <h2 class="section-title">Professional Experience</h2>
+                        <div class="timeline">
+                            <article class="entry">
+                                <div class="entry-header">
+                                    <div>
+                                        <h3 class="entry-title">Store Advisor, ON</h3>
+                                        <p class="entry-meta">Brompton Road store opening support and customer experience delivery.</p>
+                                    </div>
+                                    <div class="entry-date">Nov 2025 - Present</div>
+                                </div>
+                                <ul class="entry-list">
+                                    <li>Deliver a premium and consultative in-store experience for a broad customer base.</li>
+                                    <li>Create a welcoming environment that encourages repeat visits and strong brand loyalty.</li>
+                                    <li>Maintain high visual and operational standards during busy trading periods.</li>
+                                </ul>
+                            </article>
+
+                            <article class="entry">
+                                <div class="entry-header">
+                                    <div>
+                                        <h3 class="entry-title">Crew Member, McDonald's</h3>
+                                        <p class="entry-meta">Worked at one of the UK's busiest sites, ranked first in Wales.</p>
+                                    </div>
+                                    <div class="entry-date">Sep 2023 - Oct 2025</div>
+                                </div>
+                                <ul class="entry-list">
+                                    <li>Handled high-volume service while maintaining speed, accuracy, and customer care.</li>
+                                    <li>Supported the setup of a new store location and adapted quickly across teams.</li>
+                                    <li>Managed transactions and operational deadlines effectively during peak demand.</li>
+                                </ul>
+                            </article>
+
+                            <article class="entry">
+                                <div class="entry-header">
+                                    <div>
+                                        <h3 class="entry-title">Waiter, Anyone Waiting (A1W)</h3>
+                                        <p class="entry-meta">Event and hospitality support across weddings and public venues.</p>
+                                    </div>
+                                    <div class="entry-date">Aug 2021 - Sep 2022</div>
+                                </div>
+                                <ul class="entry-list">
+                                    <li>Delivered polished guest service in formal, fast-moving event environments.</li>
+                                    <li>Helped coordinate logistics for large public events including seasonal community activities.</li>
+                                    <li>Contributed to smooth front-of-house operations through attention to detail and adaptability.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2 class="section-title">Leadership and International Experience</h2>
+                        <div class="timeline">
+                            <article class="entry">
+                                <div class="entry-header">
+                                    <div>
+                                        <h3 class="entry-title">Scouting Representation and Youth Leadership</h3>
+                                        <p class="entry-meta">United Kingdom representation, youth development, and accredited leadership support.</p>
+                                    </div>
+                                </div>
+                                <ul class="entry-list">
+                                    <li>Selected from more than 300 young people to represent the UK at the World Scout Jamboree in Korea in 2023.</li>
+                                    <li>Chosen for the World Scout Moot in Portugal, reflecting strong communication and teamwork in international settings.</li>
+                                    <li>Served as a qualified Young Leader with First Aid, Mental Health, and Safeguarding accreditation.</li>
+                                </ul>
+                            </article>
+
+                            <article class="entry">
+                                <div class="entry-header">
+                                    <div>
+                                        <h3 class="entry-title">International Partnership and Community Outreach</h3>
+                                        <p class="entry-meta">Education partnership building, fundraising, and policy-aligned programme support.</p>
+                                    </div>
+                                </div>
+                                <ul class="entry-list">
+                                    <li>Helped establish an International Skills Partnership between Coleg Sir Gar and Tu Duc College of Technology in Vietnam.</li>
+                                    <li>Took part in a placement in Ho Chi Minh City that supported the exchange and strengthened long-term collaboration.</li>
+                                    <li>Raised more than £2,000 with Dolen Cymru for Wales-Lesotho cultural exchange work and supported the Taith learning exchange programme.</li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="cv-side">
+                    <section class="section">
+                        <h2 class="section-title">Education</h2>
+
+                        <div class="education-card">
+                            <h3 class="card-title">University of Westminster</h3>
+                            <p class="card-subtitle">BA (Hons) International Relations and Development</p>
+                            <p class="card-subtitle">2025 - Present</p>
+                            <p class="card-subtitle">Expected graduation: 2028</p>
+                        </div>
+
+                        <div class="education-card">
+                            <h3 class="card-title">NCFE / Pearson Qualifications</h3>
+                            <ul class="education-list">
+                                <li>BTEC Level 3 Extended Diploma in Travel and Tourism, Level 3 Distinction</li>
+                                <li>BTEC Level 2 Public Services, Level 2 Distinction</li>
+                            </ul>
+                            <p class="card-subtitle">Completed 2025</p>
+                        </div>
+
+                        <div class="education-card">
+                            <h3 class="card-title">Ysgol Bryngwyn</h3>
+                            <p class="card-subtitle">10 GCSEs completed in 2023.</p>
+                            <ul class="education-list">
+                                <li>B grades in Mathematics Numeracy, Science Double Award 1, and English Literature.</li>
+                                <li>Seven further passes at grade C or above.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2 class="section-title">Core Strengths</h2>
+                        <div class="badge-row">
+                            <span class="badge">Customer Service</span>
+                            <span class="badge">Leadership</span>
+                            <span class="badge">Teamwork</span>
+                            <span class="badge">International Collaboration</span>
+                            <span class="badge">Fundraising</span>
+                            <span class="badge">Community Outreach</span>
+                            <span class="badge">Adaptability</span>
+                            <span class="badge">Event Support</span>
+                        </div>
+                    </section>
+
+                    <section class="section">
+                        <h2 class="section-title">Highlights</h2>
+
+                        <div class="side-card">
+                            <h3 class="card-title">High-pressure environments</h3>
+                            <p class="card-subtitle">Experienced in fast-moving retail, hospitality, and event settings where professionalism and pace matter.</p>
+                        </div>
+
+                        <div class="side-card">
+                            <h3 class="card-title">Cross-cultural communication</h3>
+                            <p class="card-subtitle">Comfortable representing organisations and working with people from diverse backgrounds in international programmes.</p>
+                        </div>
+
+                        <div class="side-card">
+                            <h3 class="card-title">Certifications</h3>
+                            <ul class="side-list">
+                                <li>First Aid</li>
+                                <li>Mental Health</li>
+                                <li>Safeguarding</li>
+                            </ul>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+
+            <section class="website-panel" aria-label="Website link">
+                <div>
+                    <p class="website-kicker">Online Version</p>
+                    <h2 class="website-title">View the live website</h2>
+                    <p class="website-copy">Scan the QR code or visit the link below to open the full web version of this CV.</p>
+                    <a class="website-link" href="https://cv.charliemillson.me">cv.charliemillson.me</a>
+                </div>
+                <img
+                    class="website-qr"
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fcv.charliemillson.me"
+                    alt="QR code linking to cv.charliemillson.me"
+                >
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>
