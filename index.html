@@ -99,7 +99,7 @@
         /* --- Print Styles --- */
         @media print {
             /* Hide all buttons, modals, and interactive elements */
-            #download-pdf-button,
+            #cv-version-link,
             #copy-email-button,
             #phone-link,
             .external-logo-link, /* Hides the logo links */
@@ -171,11 +171,13 @@
         <!-- Added `relative` for button positioning -->
         <header class="relative bg-white shadow-xl rounded-2xl p-6 md:p-10 mb-8 border-t-4 border-teal-600">
             
-            <!-- Download PDF Button -->
-            <button id="download-pdf-button" type="button" class="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-2 bg-teal-600 text-white px-3 py-2 rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all text-sm font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                <span class="hidden sm:inline">Download PDF</span>
-            </button>
+            <div class="absolute top-6 right-6 md:top-10 md:right-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <a id="cv-version-link" href="cv.html" class="flex items-center justify-center gap-2 bg-white text-teal-700 border border-teal-200 px-3 py-2 rounded-lg shadow-sm hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all text-sm font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                    <span class="hidden sm:inline">CV Version</span>
+                    <span class="sm:hidden">CV</span>
+                </a>
+            </div>
             
             <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-2">Charlie Millson</h1>
             <p class="text-xl font-medium text-teal-600 mb-4">International Relations and Development BA Student</p>
@@ -492,14 +494,6 @@
                 modal.classList.add('hidden');
             }, 300); // Match duration-300
         };
-
-        // --- Download PDF Logic ---
-        const downloadPdfButton = document.getElementById('download-pdf-button');
-        if (downloadPdfButton) {
-            downloadPdfButton.addEventListener('click', () => {
-                window.print();
-            });
-        }
 
         // --- External Link Modal ---
         const externalModal = document.getElementById('external-link-modal');
